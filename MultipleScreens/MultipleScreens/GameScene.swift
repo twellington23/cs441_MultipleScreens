@@ -10,33 +10,60 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
+    var timerLabel: SKLabelNode!
+
+    var time = 0 {
+        didSet {
+            timerLabel.text = "Time: \(time)"
+        }
+    }
     
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     
+    let background = SKSpriteNode(imageNamed: "metal")
+    let bcircle = SKSpriteNode(imageNamed: "bcircle")
+    let info = SKSpriteNode(imageNamed: "info")
+    let instructions = SKSpriteNode(imageNamed: "instructions")
+    
     override func didMove(to view: SKView) {
         
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        if let label = self.label {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
+        background.position = CGPoint(x: size.width * 0.2, y: size.width * 0.1)
+        background.zPosition = -1
+        background.name = "background"
+        addChild(background)
+        
+        info.position = CGPoint(x: 500, y: size.width * 500)
+        info.zPosition = 1
+        addChild(info)
+        
+        instructions.position = CGPoint(x: size.width * 0.015, y: size.width * 0.5)
+        instructions.zPosition = -3
+        addChild(instructions)
+        
+        bcircle.position = CGPoint(x: size.width * 0.015, y: size.width * 0.5)
+        background.zPosition = 0
+        bcircle.name = "bcirlce"
+        addChild(bcircle)
+        
+        let instructions = SKAction.run {
+            if(self.background.zPosition == -1){
+                self.background.zPosition = 5
+                self.instructions.zPosition = 6
+            } else {
+                self.background.zPosition = -1
+                self.instructions.zPosition = -2
+            }
         }
         
-        // Create shape node to use during mouse interaction
-        let w = (self.size.width + self.size.height) * 0.05
-        self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
-        
-        if let spinnyNode = self.spinnyNode {
-            spinnyNode.lineWidth = 2.5
-            
-            spinnyNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1)))
-            spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
-                                              SKAction.fadeOut(withDuration: 0.5),
-                                              SKAction.removeFromParent()]))
-        }
+        //let square = Draw(frame: CGRect(
+        //    origin: CGPoint(x: 50, y: 50),
+        //    size: CGSize(width: 100, height: 100)))
     }
     
+    func showInfo(){
+        
+    }
     
     func touchDown(atPoint pos : CGPoint) {
         if let n = self.spinnyNode?.copy() as! SKShapeNode? {
@@ -63,9 +90,27 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let label = self.label {
-            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
-        }
+        //let touch:UITouch = touches.bcircle() as! UITouch
+        //let positionInScene = touch.location(in: self)
+        //_ = self.atPoint(positionInScene)
+        
+        //if let label = self.label {
+        //    label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
+        //}
+        
+        //let touch:UITouch = touches.anyObject() as! UITouch
+        //let positionInScene = touches.location(in: self)
+        //let touchedNode = self.atPoint(positionInScene)
+        /*
+        info.position = CGPoint(x: size.width * 0.9, y: size.width * 0.4)
+        info.zPosition = 10
+        info.isUserInteractionEnabled = false
+        let info = SKSpriteNode(imageNamed: "info")
+        addChild(info)
+        */
+        //if info = self.info {
+        //    info.run(SKAction(named: instructions))
+        //}
         
         for t in touches { self.touchDown(atPoint: t.location(in: self)) }
     }
