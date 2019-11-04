@@ -1,0 +1,56 @@
+commit 141b96601412fdd7758edab11cbd495c22f173ac
+Author: Tyler Wellington <twellin1@binghamton.edu>
+Date:   Mon Nov 4 02:57:05 2019 -0500
+
+    implementing second screen
+
+ .../UserInterfaceState.xcuserstate                 | Bin 11064 -> 28352 bytes
+ .../bcircle.imageset/Blue+Circle.png               | Bin 0 -> 17411 bytes
+ .../Assets.xcassets/bcircle.imageset/Contents.json |  21 ++++++
+ .../Assets.xcassets/info.imageset/Contents.json    |  21 ++++++
+ .../Assets.xcassets/info.imageset/Info-I-Logo.png  | Bin 0 -> 5227 bytes
+ .../instructions.imageset/Contents.json            |  21 ++++++
+ .../output-onlinepngtools.png                      | Bin 0 -> 13967 bytes
+ .../Assets.xcassets/metal.imageset/Contents.json   |  21 ++++++
+ .../metal.imageset/speaker-grille-texture-1.jpg    | Bin 0 -> 2501977 bytes
+ .../MultipleScreens/Base.lproj/Main.storyboard     |  27 +++++--
+ MultipleScreens/MultipleScreens/GameScene.sks      | Bin 4694 -> 4102 bytes
+ MultipleScreens/MultipleScreens/GameScene.swift    |  83 ++++++++++++++++-----
+ .../MultipleScreens/GameViewController.swift       |   3 +-
+ 13 files changed, 171 insertions(+), 26 deletions(-)
+
+commit bc8ec9ddc456510769307814719f18ea60fd1b6b
+Author: Tyler Wellington <twellin1@binghamton.edu>
+Date:   Mon Oct 14 10:13:16 2019 -0400
+
+    added xcode files
+
+ .../MultipleScreens.xcodeproj/project.pbxproj      | 597 +++++++++++++++++++++
+ .../project.xcworkspace/contents.xcworkspacedata   |   7 +
+ .../xcshareddata/IDEWorkspaceChecks.plist          |   8 +
+ .../UserInterfaceState.xcuserstate                 | Bin 0 -> 11064 bytes
+ .../xcschemes/xcschememanagement.plist             |  14 +
+ MultipleScreens/MultipleScreens/Actions.sks        | Bin 0 -> 1892 bytes
+ MultipleScreens/MultipleScreens/AppDelegate.swift  |  41 ++
+ .../AppIcon.appiconset/Contents.json               |  98 ++++
+ .../MultipleScreens/Assets.xcassets/Contents.json  |   6 +
+ .../Base.lproj/LaunchScreen.storyboard             |  25 +
+ .../MultipleScreens/Base.lproj/Main.storyboard     |  24 +
+ MultipleScreens/MultipleScreens/GameScene.sks      | Bin 0 -> 4694 bytes
+ MultipleScreens/MultipleScreens/GameScene.swift    |  89 +++
+ .../MultipleScreens/GameViewController.swift       |  50 ++
+ MultipleScreens/MultipleScreens/Info.plist         |  47 ++
+ MultipleScreens/MultipleScreensTests/Info.plist    |  22 +
+ .../MultipleScreensTests.swift                     |  34 ++
+ MultipleScreens/MultipleScreensUITests/Info.plist  |  22 +
+ .../MultipleScreensUITests.swift                   |  43 ++
+ 19 files changed, 1127 insertions(+)
+
+commit 1e42fd81062acaa73e2fe81c66c4e15194ff46e9
+Author: twellington23 <42653953+twellington23@users.noreply.github.com>
+Date:   Mon Oct 14 10:08:26 2019 -0400
+
+    Initial commit
+
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)
