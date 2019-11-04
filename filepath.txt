@@ -1,3 +1,41 @@
+commit 6a968a0529c5ea4300a9e9616ad0d0d2e5af0838
+Author: Tyler Wellington <twellin1@binghamton.edu>
+Date:   Mon Nov 4 03:42:26 2019 -0500
+
+    changed background
+
+ .../UserInterfaceState.xcuserstate                  | Bin 28698 -> 28043 bytes
+ .../Assets.xcassets/metal.imageset/Contents.json    |   2 +-
+ .../metal.imageset/ESF-5840T-Soft-Grey-1.jpg        | Bin 0 -> 545077 bytes
+ .../metal.imageset/speaker-grille-texture-1.jpg     | Bin 2501977 -> 0 bytes
+ 4 files changed, 1 insertion(+), 1 deletion(-)
+
+commit d8ab203ff63cc39e74a432b20fdadf2d031d8637
+Merge: 0160c26 3051946
+Author: Tyler Wellington <twellin1@binghamton.edu>
+Date:   Mon Nov 4 03:12:47 2019 -0500
+
+    Merge branch 'master' of https://github.com/twellington23/cs441_MultipleScreens
+
+commit 0160c26cf3b2ff02db92db1ab4a981c5baa6dd81
+Author: Tyler Wellington <twellin1@binghamton.edu>
+Date:   Mon Nov 4 03:12:28 2019 -0500
+
+    added filepath
+
+ .../UserInterfaceState.xcuserstate                 | Bin 28352 -> 28698 bytes
+ filepath.txt                                       |  56 +++++++++++++++++++++
+ 2 files changed, 56 insertions(+)
+
+commit 30519460d49893d009c2e08450f0535e209bd486
+Author: twellington23 <42653953+twellington23@users.noreply.github.com>
+Date:   Mon Nov 4 03:06:42 2019 -0500
+
+    Update README.md
+
+ README.md | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
 commit 141b96601412fdd7758edab11cbd495c22f173ac
 Author: Tyler Wellington <twellin1@binghamton.edu>
 Date:   Mon Nov 4 02:57:05 2019 -0500
