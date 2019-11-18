@@ -44,15 +44,12 @@ class GameScene: SKScene {
         
         let button = UIButton(type: UIButton.ButtonType.system) as UIButton
         button.setTitle("Instructions", for: UIControl.State.normal)
-        //button.titleLabel?.font = UIFont(
         button.frame = CGRect(x: 125, y: 750, width: 125, height: 45)
         button.tintColor = UIColor.black
         button.addTarget(self, action: #selector(showInfo(_:)), for: .touchUpInside)
         self.view?.addSubview(button)
         
-        //run(SKAction.repeatForever(SKAction.sequence([SKAction.run(runGame), SKAction.wait(forDuration: 5)])))
-        
-        runGame()
+        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(addButtons), SKAction.wait(forDuration: 2)])))
     }
     
     @objc func showInfo(_ sender:UIButton!){
@@ -70,11 +67,16 @@ class GameScene: SKScene {
         }
     }
     
-    func runGame(){
+    func addButtons(){
         let p0 = CGPoint(x: size.width*0.0125, y: size.height*0.2)
         let p1 = CGPoint(x: size.width*0.0125, y: size.height*0.2*(-1))
         var point = Int(arc4random_uniform(100))
         
+        if((bcircle.parent) != nil || (rcircle.parent) != nil){
+            score = 0
+            bcircle.removeFromParent()
+            rcircle.removeFromParent()
+        }
         
         if(point < 50){
             bcircle.position = p0
