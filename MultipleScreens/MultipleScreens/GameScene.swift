@@ -23,10 +23,13 @@ class GameScene: SKScene {
     
     let background = SKSpriteNode(imageNamed: "metal")
     let bcircle = SKSpriteNode(imageNamed: "bcircle")
+    let rcircle = SKSpriteNode(imageNamed: "rcircle")
     let info = SKSpriteNode(imageNamed: "info")
     let instructions = SKSpriteNode(imageNamed: "instructions")
     
     override func didMove(to view: SKView) {
+        let p1 = CGPoint(x: size.width*0.0125, y: size.height*0.2)
+        let p2 = CGPoint(x: size.width*0.0125, y: size.height*0.2*(-1))
         
         background.position = CGPoint(x: size.width * 0.2, y: size.width * 0.1)
         background.zPosition = -1
@@ -41,10 +44,16 @@ class GameScene: SKScene {
         instructions.zPosition = -3
         addChild(instructions)
         
-        bcircle.position = CGPoint(x: size.width * 0.015, y: size.width * 0.5)
+        bcircle.position = p1
+            //CGPoint(x: size.width * 0.0125, y: size.width * 0.5)
         background.zPosition = 0
         bcircle.name = "bcirlce"
         addChild(bcircle)
+        
+        rcircle.position = p2
+        rcircle.zPosition = 0
+        rcircle.name = "rcircle"
+        addChild(rcircle)
         
         let instructions = SKAction.run {
             if(self.background.zPosition == -1){
