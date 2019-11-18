@@ -21,17 +21,19 @@ class GameScene: SKScene {
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     
-    let background = SKSpriteNode(imageNamed: "metal")
+    let background1 = SKSpriteNode(imageNamed: "grey")
+    let background2 = SKSpriteNode(imageNamed: "grey")
     let bcircle = SKSpriteNode(imageNamed: "bcircle")
     let rcircle = SKSpriteNode(imageNamed: "rcircle")
     let info = SKSpriteNode(imageNamed: "info")
     let instructions = SKSpriteNode(imageNamed: "instructions")
+    var isTapped = false
     
     override func didMove(to view: SKView) {
-        background.position = CGPoint(x: size.width * 0.2, y: size.width * 0.1)
-        background.zPosition = -1
-        background.name = "background"
-        addChild(background)
+        background1.position = CGPoint(x: size.width * 0.2, y: size.width * 0.1)
+        background1.zPosition = -1
+        background1.name = "background"
+        addChild(background1)
         
         let button = UIButton(type: UIButton.ButtonType.system) as UIButton
         button.setTitle("Instructions", for: UIControl.State.normal)
@@ -44,28 +46,21 @@ class GameScene: SKScene {
         
         runGame()
         //showInfo()
-        
-//        info.position = CGPoint(x: 500, y: size.width * 500)
-//        info.zPosition = 1
-//        addChild(info)
-        
-        
-//        let instructions = SKAction.run {
-//            if(self.background.zPosition == -1){
-//                self.background.zPosition = 5
-//                self.instructions.zPosition = 6
-//            } else {
-//                self.background.zPosition = -1
-//                self.instructions.zPosition = -2
-//            }
-//        }
     }
     
     @objc func showInfo(_ sender:UIButton!){
-        print("Button tapped")
-        instructions.position = CGPoint(x: size.width * 0.015, y: size.width * 0.5)
-        instructions.zPosition = 3
-        addChild(instructions)
+        isTapped = !isTapped
+        background2.position = CGPoint(x: size.width * 0.2, y: size.width * 0.1)
+        background2.zPosition = 3
+        instructions.position = CGPoint(x: size.width * 0.015, y: size.width * 0.4)
+        instructions.zPosition = 4
+        if(isTapped){
+            addChild(instructions)
+            addChild(background2)
+        } else {
+            instructions.removeFromParent()
+            background2.removeFromParent()
+        }
     }
     
 //    func showInfo(){
@@ -82,7 +77,7 @@ class GameScene: SKScene {
         
         if(point == 0){
             bcircle.position = p0
-            background.zPosition = 0
+            bcircle.zPosition = 0
             bcircle.name = "bcirlce"
             addChild(bcircle)
             
@@ -92,7 +87,7 @@ class GameScene: SKScene {
             addChild(rcircle)
         } else {
             bcircle.position = p1
-            background.zPosition = 0
+            bcircle.zPosition = 0
             bcircle.name = "bcirlce"
             addChild(bcircle)
             
