@@ -28,50 +28,79 @@ class GameScene: SKScene {
     let instructions = SKSpriteNode(imageNamed: "instructions")
     
     override func didMove(to view: SKView) {
-        let p1 = CGPoint(x: size.width*0.0125, y: size.height*0.2)
-        let p2 = CGPoint(x: size.width*0.0125, y: size.height*0.2*(-1))
-        
         background.position = CGPoint(x: size.width * 0.2, y: size.width * 0.1)
         background.zPosition = -1
         background.name = "background"
         addChild(background)
         
-        info.position = CGPoint(x: 500, y: size.width * 500)
-        info.zPosition = 1
-        addChild(info)
+        let button = UIButton(type: UIButton.ButtonType.system) as UIButton
+        button.setTitle("Instructions", for: UIControl.State.normal)
+        button.frame = CGRect(x: 125, y: 750, width: 125, height: 45)
+        button.tintColor = UIColor.black
+        button.addTarget(self, action: #selector(showInfo(_:)), for: .touchUpInside)
+        self.view?.addSubview(button)
         
-        instructions.position = CGPoint(x: size.width * 0.015, y: size.width * 0.5)
-        instructions.zPosition = -3
-        addChild(instructions)
+        //run(SKAction.repeatForever(SKAction.sequence([SKAction.run(runGame), SKAction.wait(forDuration: 5)])))
         
-        bcircle.position = p1
-            //CGPoint(x: size.width * 0.0125, y: size.width * 0.5)
-        background.zPosition = 0
-        bcircle.name = "bcirlce"
-        addChild(bcircle)
+        runGame()
+        //showInfo()
         
-        rcircle.position = p2
-        rcircle.zPosition = 0
-        rcircle.name = "rcircle"
-        addChild(rcircle)
+//        info.position = CGPoint(x: 500, y: size.width * 500)
+//        info.zPosition = 1
+//        addChild(info)
         
-        let instructions = SKAction.run {
-            if(self.background.zPosition == -1){
-                self.background.zPosition = 5
-                self.instructions.zPosition = 6
-            } else {
-                self.background.zPosition = -1
-                self.instructions.zPosition = -2
-            }
-        }
         
-        //let square = Draw(frame: CGRect(
-        //    origin: CGPoint(x: 50, y: 50),
-        //    size: CGSize(width: 100, height: 100)))
+//        let instructions = SKAction.run {
+//            if(self.background.zPosition == -1){
+//                self.background.zPosition = 5
+//                self.instructions.zPosition = 6
+//            } else {
+//                self.background.zPosition = -1
+//                self.instructions.zPosition = -2
+//            }
+//        }
     }
     
-    func showInfo(){
+    @objc func showInfo(_ sender:UIButton!){
+        print("Button tapped")
+        instructions.position = CGPoint(x: size.width * 0.015, y: size.width * 0.5)
+        instructions.zPosition = 3
+        addChild(instructions)
+    }
+    
+//    func showInfo(){
+//        instructions.position = CGPoint(x: size.width * 0.015, y: size.width * 0.5)
+//        instructions.zPosition = -3
+//        addChild(instructions)
+//    }
+    
+    func runGame(){
+        let p0 = CGPoint(x: size.width*0.0125, y: size.height*0.2)
+        let p1 = CGPoint(x: size.width*0.0125, y: size.height*0.2*(-1))
+        var point = Int(arc4random_uniform(2))
+        print(point)
         
+        if(point == 0){
+            bcircle.position = p0
+            background.zPosition = 0
+            bcircle.name = "bcirlce"
+            addChild(bcircle)
+            
+            rcircle.position = p1
+            rcircle.zPosition = 0
+            rcircle.name = "rcircle"
+            addChild(rcircle)
+        } else {
+            bcircle.position = p1
+            background.zPosition = 0
+            bcircle.name = "bcirlce"
+            addChild(bcircle)
+            
+            rcircle.position = p0
+            rcircle.zPosition = 0
+            rcircle.name = "rcircle"
+            addChild(rcircle)
+        }
     }
     
     func touchDown(atPoint pos : CGPoint) {
