@@ -50,7 +50,6 @@ class GameScene: SKScene {
         self.view?.addSubview(button)
         
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run(addButtons), SKAction.wait(forDuration: 2)])))
-        //addButtons()
     }
     
     @objc func showInfo(_ sender:UIButton!){
