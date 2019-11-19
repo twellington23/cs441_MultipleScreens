@@ -27,6 +27,7 @@ class GameScene: SKScene {
     let rcircle = SKSpriteNode(imageNamed: "rcircle")
     let info = SKSpriteNode(imageNamed: "info")
     let instructions = SKSpriteNode(imageNamed: "instructions")
+    let button = UIButton(type: UIButton.ButtonType.system) as UIButton
     var isTapped = false
     
     override func didMove(to view: SKView) {
@@ -42,15 +43,14 @@ class GameScene: SKScene {
         scoreLabel.zPosition = 1
         addChild(scoreLabel)
         
-        let button = UIButton(type: UIButton.ButtonType.system) as UIButton
         button.setTitle("Instructions", for: UIControl.State.normal)
         button.frame = CGRect(x: 125, y: 750, width: 125, height: 45)
         button.tintColor = UIColor.black
         button.addTarget(self, action: #selector(showInfo(_:)), for: .touchUpInside)
         self.view?.addSubview(button)
         
-        //run(SKAction.repeatForever(SKAction.sequence([SKAction.run(addButtons), SKAction.wait(forDuration: 2)])))
-        addButtons()
+        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(addButtons), SKAction.wait(forDuration: 2)])))
+        //addButtons()
     }
     
     @objc func showInfo(_ sender:UIButton!){
@@ -59,9 +59,11 @@ class GameScene: SKScene {
         instructionsBG.zPosition = 3
         instructions.position = CGPoint(x: size.width * 0.015, y: size.width * 0.4)
         instructions.zPosition = 4
+        
         if(isTapped){
             addChild(instructions)
             addChild(instructionsBG)
+            score = 0
         } else {
             instructions.removeFromParent()
             instructionsBG.removeFromParent()
@@ -71,12 +73,15 @@ class GameScene: SKScene {
     func addButtons(){
         let p0 = CGPoint(x: size.width*0.0125, y: size.height*0.2)
         let p1 = CGPoint(x: size.width*0.0125, y: size.height*0.2*(-1))
-        var point = Int(arc4random_uniform(100))
+        let point = Int(arc4random_uniform(100))
         
         if((bcircle.parent) != nil || (rcircle.parent) != nil){
             score = 0
             bcircle.removeFromParent()
             rcircle.removeFromParent()
+            if(!isTapped){
+                button.sendActions(for: .touchUpInside)
+            }
         }
         
         if(point < 50){
@@ -111,7 +116,15 @@ class GameScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
         if bcircle.contains(touch.location(in: self)) {
-            print("touched")
+            score+=1
+            bcircle.removeFromParent()
+            rcircle.removeFromParent()
+        }
+        if rcircle.contains(touch.location(in: self)) {
+            score = 0
+            bcircle.removeFromParent()
+            rcircle.removeFromParent()
+            button.sendActions(for: .touchUpInside)
         }
     }
     
