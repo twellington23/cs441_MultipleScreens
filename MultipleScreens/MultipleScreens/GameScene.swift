@@ -21,8 +21,8 @@ class GameScene: SKScene {
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     
-    let background1 = SKSpriteNode(imageNamed: "grey")
-    let background2 = SKSpriteNode(imageNamed: "grey")
+    let gameBG = SKSpriteNode(imageNamed: "grey")
+    let instructionsBG = SKSpriteNode(imageNamed: "grey")
     let bcircle = SKSpriteNode(imageNamed: "bcircle")
     let rcircle = SKSpriteNode(imageNamed: "rcircle")
     let info = SKSpriteNode(imageNamed: "info")
@@ -30,10 +30,10 @@ class GameScene: SKScene {
     var isTapped = false
     
     override func didMove(to view: SKView) {
-        background1.position = CGPoint(x: size.width * 0.2, y: size.width * 0.1)
-        background1.zPosition = -1
-        background1.name = "background"
-        addChild(background1)
+        gameBG.position = CGPoint(x: size.width * 0.2, y: size.width * 0.1)
+        gameBG.zPosition = -1
+        gameBG.name = "background"
+        addChild(gameBG)
         
         scoreLabel = SKLabelNode(fontNamed: "Courier")
         scoreLabel.fontColor = UIColor.black
@@ -49,21 +49,22 @@ class GameScene: SKScene {
         button.addTarget(self, action: #selector(showInfo(_:)), for: .touchUpInside)
         self.view?.addSubview(button)
         
-        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(addButtons), SKAction.wait(forDuration: 2)])))
+        //run(SKAction.repeatForever(SKAction.sequence([SKAction.run(addButtons), SKAction.wait(forDuration: 2)])))
+        addButtons()
     }
     
     @objc func showInfo(_ sender:UIButton!){
         isTapped = !isTapped
-        background2.position = CGPoint(x: size.width * 0.2, y: size.width * 0.1)
-        background2.zPosition = 3
+        instructionsBG.position = CGPoint(x: size.width * 0.2, y: size.width * 0.1)
+        instructionsBG.zPosition = 3
         instructions.position = CGPoint(x: size.width * 0.015, y: size.width * 0.4)
         instructions.zPosition = 4
         if(isTapped){
             addChild(instructions)
-            addChild(background2)
+            addChild(instructionsBG)
         } else {
             instructions.removeFromParent()
-            background2.removeFromParent()
+            instructionsBG.removeFromParent()
         }
     }
     
@@ -101,67 +102,24 @@ class GameScene: SKScene {
         }
     }
     
-    func touchDown(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.green
-            self.addChild(n)
-        }
-    }
+    func touchDown(atPoint pos : CGPoint) {}
     
-    func touchMoved(toPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.blue
-            self.addChild(n)
-        }
-    }
+    func touchMoved(toPoint pos : CGPoint) {}
     
-    func touchUp(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.red
-            self.addChild(n)
-        }
-    }
+    func touchUp(atPoint pos : CGPoint) {}
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //let touch:UITouch = touches.bcircle() as! UITouch
-        //let positionInScene = touch.location(in: self)
-        //_ = self.atPoint(positionInScene)
-        
-        //if let label = self.label {
-        //    label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
-        //}
-        
-        //let touch:UITouch = touches.anyObject() as! UITouch
-        //let positionInScene = touches.location(in: self)
-        //let touchedNode = self.atPoint(positionInScene)
-        /*
-        info.position = CGPoint(x: size.width * 0.9, y: size.width * 0.4)
-        info.zPosition = 10
-        info.isUserInteractionEnabled = false
-        let info = SKSpriteNode(imageNamed: "info")
-        addChild(info)
-        */
-        //if info = self.info {
-        //    info.run(SKAction(named: instructions))
-        //}
-        
-        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
+        let touch = touches.first!
+        if bcircle.contains(touch.location(in: self)) {
+            print("touched")
+        }
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
-    }
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {}
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {}
     
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {}
     
     
     override func update(_ currentTime: TimeInterval) {
