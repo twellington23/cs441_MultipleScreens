@@ -1,3 +1,113 @@
+commit 2690698031062de6ef732ea15b1e49c2f6be512c
+Author: twellington23 <42653953+twellington23@users.noreply.github.com>
+Date:   Tue Nov 19 16:56:16 2019 -0500
+
+    Update README.md
+
+ README.md | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+commit b86f58f6fabb2edc517d2e41a87f69e59bb16e5e
+Author: Tyler Wellington <twellin1@binghamton.edu>
+Date:   Tue Nov 19 16:43:12 2019 -0500
+
+    final commit
+
+ .../UserInterfaceState.xcuserstate                  | Bin 29712 -> 29722 bytes
+ MultipleScreens/MultipleScreens/GameScene.swift     |   1 -
+ 2 files changed, 1 deletion(-)
+
+commit f43d9de524fd98b751448fb2f4319a9c4447cf86
+Author: Tyler Wellington <twellin1@binghamton.edu>
+Date:   Tue Nov 19 16:42:04 2019 -0500
+
+    added score tracking and losing mechanics
+
+ .../UserInterfaceState.xcuserstate                 | Bin 29706 -> 29712 bytes
+ MultipleScreens/MultipleScreens/GameScene.swift    |  23 ++++++++++++++++-----
+ 2 files changed, 18 insertions(+), 5 deletions(-)
+
+commit a7ffd13cfdd8d7d3e683c532834d5213f44d7a6b
+Author: Tyler Wellington <twellin1@binghamton.edu>
+Date:   Tue Nov 19 12:26:48 2019 -0500
+
+    can detect touch on SKSpritenodes
+
+ .../UserInterfaceState.xcuserstate                 | Bin 29750 -> 29706 bytes
+ MultipleScreens/MultipleScreens/GameScene.swift    |  86 ++++++---------------
+ 2 files changed, 22 insertions(+), 64 deletions(-)
+
+commit ac92030c0b6a66d3e3dd500afea277661b8a3a01
+Author: Tyler Wellington <twellin1@binghamton.edu>
+Date:   Mon Nov 18 16:25:13 2019 -0500
+
+    fixed game crashing when repeating SKActions
+
+ .../UserInterfaceState.xcuserstate                  | Bin 29749 -> 29750 bytes
+ MultipleScreens/MultipleScreens/GameScene.swift     |  12 +++++++-----
+ 2 files changed, 7 insertions(+), 5 deletions(-)
+
+commit 08495a3f2ebc71cf29d8c82b029eada728729f56
+Author: Tyler Wellington <twellin1@binghamton.edu>
+Date:   Mon Nov 18 16:00:40 2019 -0500
+
+    added score label
+
+ .../UserInterfaceState.xcuserstate                 | Bin 29746 -> 29749 bytes
+ MultipleScreens/MultipleScreens/GameScene.swift    |  27 +++++++++++----------
+ .../MultipleScreens/GameViewController.swift       |   4 +--
+ 3 files changed, 16 insertions(+), 15 deletions(-)
+
+commit 440d52a232ae0f4d669ad7b4cdfd3f4659ffd31c
+Author: Tyler Wellington <twellin1@binghamton.edu>
+Date:   Mon Nov 18 14:50:47 2019 -0500
+
+    button switches between instructions and game
+
+ .../UserInterfaceState.xcuserstate                 | Bin 29129 -> 29746 bytes
+ .../Contents.json                                  |   0
+ .../ESF-5840T-Soft-Grey-1.jpg                      | Bin
+ .../instructions.imageset/Contents.json            |   2 +-
+ .../output-onlinepngtools (1).png                  | Bin 0 -> 67358 bytes
+ .../output-onlinepngtools.png                      | Bin 13967 -> 0 bytes
+ MultipleScreens/MultipleScreens/GameScene.swift    |  47 +++++++++------------
+ 7 files changed, 22 insertions(+), 27 deletions(-)
+
+commit 290faeff05ceb61ec1e5c5c046b1f5a4eb616848
+Author: Tyler Wellington <twellin1@binghamton.edu>
+Date:   Mon Nov 18 14:21:26 2019 -0500
+
+    button does button things
+
+ .../UserInterfaceState.xcuserstate                 | Bin 28376 -> 29129 bytes
+ MultipleScreens/MultipleScreens/GameScene.swift    |  91 ++++++++++++++-------
+ 2 files changed, 60 insertions(+), 31 deletions(-)
+
+commit 58754cb39a052573204e22d852ac6ec7bce07027
+Author: Tyler Wellington <twellin1@binghamton.edu>
+Date:   Mon Nov 18 12:30:14 2019 -0500
+
+    fixed sprite sizes
+
+ .../UserInterfaceState.xcuserstate                 | Bin 28043 -> 28376 bytes
+ .../bcircle.imageset/Blue+Circle.png               | Bin 17411 -> 0 bytes
+ .../Assets.xcassets/bcircle.imageset/Contents.json |   2 +-
+ .../bcircle.imageset/Pan_Blue_Circle.png           | Bin 0 -> 9357 bytes
+ .../rcircle.imageset/11246-large-red-circle.png    | Bin 0 -> 22949 bytes
+ .../Assets.xcassets/rcircle.imageset/Contents.json |  21 +++++++++++++++++++++
+ MultipleScreens/MultipleScreens/GameScene.swift    |  11 ++++++++++-
+ 7 files changed, 32 insertions(+), 2 deletions(-)
+
+commit 5965f95e227e21d230dcd8418173f918c2fed868
+Author: Tyler Wellington <twellin1@binghamton.edu>
+Date:   Mon Nov 4 03:47:24 2019 -0500
+
+    added filepath
+
+ .../UserInterfaceState.xcuserstate                 | Bin 28043 -> 28043 bytes
+ filepath.txt                                       |  38 +++++++++++++++++++++
+ 2 files changed, 38 insertions(+)
+
 commit 6a968a0529c5ea4300a9e9616ad0d0d2e5af0838
 Author: Tyler Wellington <twellin1@binghamton.edu>
 Date:   Mon Nov 4 03:42:26 2019 -0500
